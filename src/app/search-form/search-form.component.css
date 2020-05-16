@@ -1,10 +1,13 @@
+body{
+    background-color:lightblue;
+}
 .search-bar{
-    margin-top:60px;
+    padding-top:60px;
 }
 
 .search-results{
-    margin-top:60px;
-    margin-bottom:10px;
+    padding-top:60px;
+    padding-bottom:10px;
 }
 
 #loadingAnimation {

@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { SearchService } from '../search.service';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Song } from '../Song';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map, catchError, finalize} from 'rxjs/operators';
 
 @Component({
@@ -18,14 +18,23 @@ export class SearchFormComponent implements OnInit {
   searchTerm : string;
   songs$ : Observable<Song[]>;
   searching : boolean;
+  error : boolean;
+  errorMsg : string;
+  
 
   getSongs() : void{
-    this.searching = true;
-    let params = new HttpParams().set('pattern', this.searchTerm);
-    this.songs$ = this.http.get<Song[]>(this.ROOT_URL, {params}).pipe(
-      map(x => x.slice(0,10)),
-      catchError(this.handleError<Song[]>('getSongs', []))
-    );
+    if(!this.searchTerm){
+      this.error = true;
+      this.errorMsg = "You must enter a term to search";
+    }else{
+      this.error = false;
+      this.searching = true;
+      let params = new HttpParams().set('pattern', this.searchTerm);
+      this.songs$ = this.http.get<Song[]>(this.ROOT_URL, {params}).pipe(
+        map(x => x.slice(0,10)),
+        catchError(this.handleError<Song[]>('getSongs', []))
+      );
+    }
   }
 
   select(song: Song){

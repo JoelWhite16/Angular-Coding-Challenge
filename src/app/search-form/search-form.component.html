@@ -1,4 +1,7 @@
-<div class="container-fluid">
+<div class="container-fluid" style="background-color:transparent;">
+  <div *ngIf="error" class="alert alert-danger" role="alert">
+    {{errorMsg}}
+  </div>
   <div class="row">
     <div class="col-12 text-center">
       <h3>Search for songs below</h3>
