@@ -1,0 +1,46 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <h2>Details</h2>
+    </div>
+    <div class="col-3"></div>
+  </div>
+  <div class="row song-detail-list">
+    <div class="col"></div>
+    <div class="col-md-6">
+      
+      <div *ngIf="song">
+        <h3>"{{song.title}}"</h3>
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Song Id:
+            <h4><span class="badge text-secondary">{{song.id}}</span></h4>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Title:
+            <h4><a class="badge text-secondary" href="http://www.songsterr.com/a/wa/song?id={{song.id}}">{{song.title}}</a></h4>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Artist:
+            <h4><a class="badge text-secondary" href="http://www.songsterr.com/a/wa/artist?id={{song.artist.id}}">{{song.artist.name}}</a></h4>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Tab Types:
+            <span class="badge text-secondary">{{song.tabTypes.join(", ")}}</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="col"></div>
+  </div>
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6" style="float:right;">
+      <button (click)="goBack()" class="btn btn-secondary">Back</button>
+    </div>
+    <div class="col-3"></div>
+  </div>
+</div>
+

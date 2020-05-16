@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\search-form",
+    "\\src\\app\\song-detail"
+  ],
+  "SelectedNode": "\\src\\app\\search-form\\search-form.component.css",
+  "PreviewInSolutionExplorer": false
+}

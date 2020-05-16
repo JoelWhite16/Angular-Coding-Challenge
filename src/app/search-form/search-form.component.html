@@ -1,0 +1,37 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h3>Search for songs below</h3>
+    </div>
+  </div>
+  <div class="row search-bar">
+    <div class="col"></div>
+    <div class="col-md-6">
+      <div class="input-group mb-3">
+        <input [(ngModel)]="searchTerm" (keyup.enter)="getSongs()" type="text" class="form-control" placeholder="Enter your search here" aria-label="Enter your search here" aria-describedby="searchBar">
+        <div class="input-group-append">
+          <button (click)="getSongs()" class="btn btn-secondary" type="button" id="searchBar">Search</button>
+        </div>
+      </div>
+    </div>
+    <div class="col"></div>
+  </div>
+  <div class="row search-results">
+    <div class="col"></div>
+    <div class="col-md-6">
+      <div *ngIf="searching">
+        <div *ngIf="songs$ | async as songs; else loadingBlock">
+          <div class="list-group">
+            <a class="list-group-item list-group-item-action" *ngFor="let song of songs" (click)="select(song)" routerLink="/detail/{{song.id}}">{{song.title}}</a>
+          </div>
+          <div *ngIf="songs.length === 0">No Results</div>
+        </div>
+        <ng-template #loadingBlock>
+          <img id="loadingAnimation" src="../assets/loading.gif" alt="Loading..." />
+        </ng-template>
+      </div>
+    </div>
+    <div class="col"></div>
+  </div>
+</div>
+
